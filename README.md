@@ -1,4 +1,4 @@
-# Projet TETRIS - RACHEDI Zakaria et SARFARAZ Momin 4A CFA
+# Projet LETTER GAME - RACHEDI Zakaria et SARFARAZ Momin 4A CFA
 
 Dans le but de répondre au sujet du projet, nous avons créé ... (to fill)
 
