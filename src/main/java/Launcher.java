@@ -1,25 +1,15 @@
 /**
  * Created by zrachedi on 08/02/2017.
  */
-public class Game {
+public class Launcher {
     private CommonPot potInstance;
 
-    public Game() {
+    public Launcher() {
         this.potInstance = CommonPot.getInstance();
     }
 
     public static void main(String[] args) {
+        System.out.println("Welcome in Letter Game !");
         Game game = new Game();
-        game.firstRound();
-
-        Player player1 = new Player();
-        IaPlayer Ia = new IaPlayer();
-
-        System.out.println("hello");
-    }
-
-    public void firstRound() {
-        player1
-        System.out.println("first round");
     }
 }
