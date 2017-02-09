@@ -9,7 +9,7 @@ public class Launcher {
     }
 
     public static void main(String[] args) {
-        System.out.println("Welcome in Letter Game !");
+        System.out.println("***WELCOME IN LETTER GAME !***\n");
         Game game = new Game();
     }
 }

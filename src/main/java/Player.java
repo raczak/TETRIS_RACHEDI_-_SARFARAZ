@@ -1,18 +1,17 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
- * Created by zrachedi on 08/02/2017.
+ * Created by zrachedi on 09/02/2017.
  */
-public class Player {
-    private ArrayList<String> words;
-    private CommonPot potInstance;
+public abstract class Player {
+    protected ArrayList<String> words;
+    protected CommonPot potInstance;
 
-    public Player() {
-        this.words = new ArrayList<String>();
-        this.potInstance = CommonPot.getInstance();
+    protected char pullLetterFromBag() {
+        Random rand = new Random();
+        char randLetter = (char)(rand.nextInt(26) + 'a');
+        return randLetter;
     }
-
-    public void pullLetterFromBag() {
-
-    }
+    abstract void round();
 }

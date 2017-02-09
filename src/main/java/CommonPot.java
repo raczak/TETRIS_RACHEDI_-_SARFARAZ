@@ -6,9 +6,9 @@ import java.util.ArrayList;
  * a single instance of the common pot for everyone
  */
 public class CommonPot {
-    private ArrayList<String> wordList;
+    private ArrayList<Character> letterList;
     private CommonPot() {
-        this.wordList = new ArrayList<String>();
+        this.letterList = new ArrayList<Character>();
     }
 
     /** Holder */
@@ -17,12 +17,16 @@ public class CommonPot {
         private final static CommonPot instance = new CommonPot();
     }
 
+    public ArrayList<Character> getLetterList() {
+        return letterList;
+    }
+
     /** Access point for unique instance of the singleton */
     public static CommonPot getInstance() {
         return CommonPotHolder.instance;
     }
 
-    public void test(){
-
+    public void addLetter(char word) {
+        this.letterList.add(word);
     }
 }
