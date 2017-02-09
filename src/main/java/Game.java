@@ -27,6 +27,6 @@ public class Game {
         this.player1.pullLetterFromBag();
         this.IA.pullLetterFromBag();
 
-        System.out.println("first round");
+        System.out.println("first round go");
     }
 }
