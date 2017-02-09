@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -7,8 +8,10 @@ import java.util.ArrayList;
  */
 public class CommonPot {
     private ArrayList<Character> letterList;
+    private Dictionary dico;
     private CommonPot() {
         this.letterList = new ArrayList<Character>();
+        this.dico = new Dictionary();
     }
 
     /** Holder */
@@ -28,5 +31,9 @@ public class CommonPot {
 
     public void addLetter(char word) {
         this.letterList.add(word);
+    }
+
+    public String compareToDico(String word) throws IOException {
+        return dico.isWord(word);
     }
 }

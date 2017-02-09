@@ -3,54 +3,51 @@
  */
 public class Game {
     private CommonPot potInstance;
-    private User user1;
-    private IaPlayer IA;
+    private Player user;
+    private Player IA;
 
     public Game() {
         this.potInstance = CommonPot.getInstance();
         /* I choose to instanciate my 2 players directly in the constructor game */
-        this.user1 = new User();
+        this.user = new User();
         this.IA = new IaPlayer();
 
         /* Then I launch the game */
-        this.gameLife();
+        this.gameCycle();
     }
 
-    public void gameLife() {
-        int bigin = this.firstRound();
-
-        if(bigin == 0) {
-            System.out.println("It is your turn !");
-            this.user1.round();
-            String letters = " ";
-            for (char item : potInstance.getLetterList()) {
-                letters += " " + new StringBuilder().append(item).toString();
+    public void gameCycle() {
+        Player player = this.firstRound();
+        int idPlayer = player.round();
+        while(user.words.size()<10 || IA.words.size()<10) {
+            if (idPlayer == 2){
+                idPlayer = user.round();
+            }else {
+                idPlayer = IA.round();
             }
-            System.out.println("Letters in common pot : "+letters);
-        }else {
-            System.out.println("It's IA's turn !");
-            String letters = " ";
-            for (char item : potInstance.getLetterList()) {
-                letters += " " + new StringBuilder().append(item).toString();
-            }
-            System.out.println("Letters in common pot : "+letters);
         }
+        String letters = " ";
+        for (String item : user.words) {
+            letters += " " + item;
+        }
+        System.out.println(letters+"\n");
     }
 
-    public int firstRound() {
+    public Player firstRound() {
         System.out.println("First round Go !!\n");
 
-        int begin = 1;
-        char p1Letter = this.user1.pullLetterFromBag();
+        char p1Letter = this.user.pullLetterFromBag();
         potInstance.addLetter(p1Letter);
+
         char IALetter = this.IA.pullLetterFromBag();
         potInstance.addLetter(IALetter);
 
+        Player winner = this.user;
         if(p1Letter > IALetter) {
-            begin = 0;
-        }else {
-            begin= 1;
+            winner = this.IA;
+        } else {
+            winner = this.user;
         }
-        return begin;
+        return winner;
     }
 }
