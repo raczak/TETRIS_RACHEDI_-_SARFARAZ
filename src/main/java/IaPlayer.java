@@ -8,7 +8,6 @@ public class IaPlayer extends Player{
     public int id = 2;
     public IaPlayer() {
         this.words = new ArrayList<String>();
-        this.potInstance = CommonPot.getInstance();
     }
 
     public int round() {
@@ -27,18 +26,16 @@ public class IaPlayer extends Player{
         try {
             String testedWord = potInstance.compareToDico("chat");
             if(testedWord == ""){
-
+                System.out.println("IA was unable to build a word :(\n");
             }else {
                 this.words.add(testedWord);
-                this.wordSuccess();
+                System.out.println("Word : '" + testedWord + "' is correct ! IA has build a word :D");
+                System.out.println("He pull another letter\n");
+                this.wordSuccess(testedWord);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return this.id;
-    }
-    
-    void wordSuccess() {
-        potInstance.addLetter(this.pullLetterFromBag());
     }
 }

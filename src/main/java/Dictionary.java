@@ -33,12 +33,10 @@ public class Dictionary implements IDictionary {
         do {
             currentLine = br.readLine();
             if (currentLine.equals(word) || currentLine.equals(null)) {
-                System.out.println("Word : '" + currentLine + "' is correct ! You can pull another letter :D\n");
                 br.close();
                 return currentLine;
             }
         } while (br.ready());
-        System.out.println("Looseeeer, your french word doesn't exist :(\n");
         return "";
     }
 }

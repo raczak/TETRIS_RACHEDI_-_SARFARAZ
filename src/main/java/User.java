@@ -1,3 +1,5 @@
+import com.sun.deploy.util.ArrayUtil;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -10,7 +12,6 @@ public class User extends Player {
     public int id = 1;
     public User() {
         this.words = new ArrayList<String>();
-        this.potInstance = CommonPot.getInstance();
     }
 
     int round() {
@@ -25,23 +26,58 @@ public class User extends Player {
         }
         System.out.println("Letters in COMMON POT : "+letters);
 
-        System.out.println("Try to build a word :");
-        String word = this.sc.nextLine();
-        try {
-            String testedWord = potInstance.compareToDico(word);
-            if(testedWord == ""){
-
-            }else {
-                this.words.add(testedWord);
-                this.wordSuccess();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        int choice = this.sc.nextInt();
+        switch (choice) {
+            case 1:
+                this.OnlyCommonPotWords();
+                break;
+            case 2:
+                if (this.words.size()>0) {
+                    this.MyWords();
+                }else {
+                    System.out.println("You haven't word yet ");
+                }
+                break;
+            case 3:
+                this.OpponentWords();
+                break;
+            default:
+                this.OnlyCommonPotWords();
         }
         return this.id;
     }
 
-    void wordSuccess() {
-        potInstance.addLetter(this.pullLetterFromBag());
+    void OnlyCommonPotWords() {
+        System.out.println("Try to build a word :");
+        Scanner scan = new Scanner(System.in);
+        String word = scan.nextLine();
+        try {
+            String testedWord = potInstance.compareToDico(word);
+            if(testedWord == ""){
+                System.out.println("Looseeeer, your french word doesn't exist :(\n");
+            }else {
+                //We add the word to player's collection
+                this.words.add(testedWord);
+                System.out.println("Word : '" + testedWord + "' is correct ! You can pull another letter :D\n");
+                this.wordSuccess(testedWord);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void MyWords() {
+        System.out.println("Use one of your words and complete it with Common Pot");
+
+        String words = " ";
+        for (String item : this.words) {
+            words += item;
+        }
+        System.out.println("YOU HAVE : "+words);
+
+    }
+
+    void OpponentWords() {
+        System.out.println("Use one of your opponent's words and complete it with Common Pot");
     }
 }

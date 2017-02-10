@@ -34,6 +34,27 @@ public class CommonPot {
     }
 
     public String compareToDico(String word) throws IOException {
-        return dico.isWord(word);
+        boolean flag = compareToCommonPot(word);
+        if(flag){
+            return dico.isWord(word);
+        }else {
+            return "";
+        }
+    }
+
+    public boolean compareToCommonPot(String word) {
+        ArrayList<Character> wordConvertedToChar = new ArrayList<Character>();
+        for (char c : word.toCharArray()) {
+            wordConvertedToChar.add(c);
+        }
+        boolean flag = false;
+        for (Character item : wordConvertedToChar) {
+            if (this.getLetterList().contains(item)) {
+                flag = true;
+            }else {
+                flag = false;
+            }
+        }
+        return flag;
     }
 }
