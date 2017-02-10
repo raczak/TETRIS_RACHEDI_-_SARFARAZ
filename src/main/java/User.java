@@ -33,13 +33,13 @@ public class User extends Player {
                 break;
             case 2:
                 if (this.words.size()>0) {
-                    this.MyWords();
+                    this.useMyWords();
                 }else {
                     System.out.println("You haven't word yet ");
                 }
                 break;
             case 3:
-                this.OpponentWords();
+                this.useOpponentWords();
                 break;
             default:
                 this.OnlyCommonPotWords();
@@ -66,18 +66,52 @@ public class User extends Player {
         }
     }
 
-    void MyWords() {
+    void useMyWords() {
         System.out.println("Use one of your words and complete it with Common Pot");
 
         String words = " ";
         for (String item : this.words) {
             words += item;
         }
-        System.out.println("YOU HAVE : "+words);
+        System.out.println("Which word you wanna us ? : "+words);
+        Scanner scan = new Scanner(System.in);
+        String wordSelected = scan.nextLine();
+
+        if (!this.words.contains(wordSelected)) {
+            System.out.println("No ! It's not your word ");
+            this.useMyWords();
+        }
+
+        //System.out.println("Ok try to build your word with : "+wordSelected);
+        System.out.println("Choose letter from Common Pot to finish your word :");
+        Scanner scan2 = new Scanner(System.in);
+        String lettersSelected = scan2.nextLine();
+
+        //Tant que le bug audessus persiste la partie ci dessous commenté ne doit pas être décommenté
+        /*if(!potInstance.compareToCommonPot(lettersSelected)){
+            System.out.println("No ! This letters are not in the Common Pot ");
+            this.useMyWords();
+        }
+        String createdWord = wordSelected + lettersSelected;
+        System.out.println("You choose : "+createdWord);
+
+        try {
+            potInstance.dicoAccess(createdWord);
+            if(createdWord == ""){
+                System.out.println("Looseeeer, your french word doesn't exist :(\n");
+            }else {
+                //We add the word to player's collection
+                this.words.add(createdWord);
+                System.out.println("Word : '" + createdWord + "' is correct ! You can pull another letter :D\n");
+                this.wordSuccess(createdWord);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
 
     }
 
-    void OpponentWords() {
+    void useOpponentWords() {
         System.out.println("Use one of your opponent's words and complete it with Common Pot");
     }
 }

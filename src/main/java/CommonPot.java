@@ -57,4 +57,7 @@ public class CommonPot {
         }
         return flag;
     }
+    public String dicoAccess(String word) throws IOException {
+        return this.dico.isWord(word);
+    }
 }
