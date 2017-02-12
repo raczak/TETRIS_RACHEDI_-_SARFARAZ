@@ -1,3 +1,6 @@
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -33,12 +36,18 @@ public class CommonPot {
         this.letterList.add(word);
     }
 
-    public String compareToDico(String word) throws IOException {
-        boolean flag = compareToCommonPot(word);
-        if(flag){
-            return dico.isWord(word);
-        }else {
-            return "";
+    public String compareToDico(String word, Boolean verification) throws IOException {
+        String convertedWord = this.convertAccentLettersToEnglishLetters(word);
+        if (verification == true) {
+            boolean flag = compareToCommonPot(convertedWord);
+            if (flag) {
+                System.out.println("dico.isWord... : "+convertedWord);
+                return dico.isWord(convertedWord);
+            } else {
+                return "";
+            }
+        } else {
+            return dico.isWord(convertedWord);
         }
     }
 
@@ -49,6 +58,7 @@ public class CommonPot {
         }
         boolean flag = false;
         for (Character item : wordConvertedToChar) {
+            System.out.println(this.getLetterList().contains(item));
             if (this.getLetterList().contains(item)) {
                 flag = true;
             }else {
@@ -57,7 +67,11 @@ public class CommonPot {
         }
         return flag;
     }
-    public String dicoAccess(String word) throws IOException {
-        return this.dico.isWord(word);
+
+    public String convertAccentLettersToEnglishLetters(String str) {
+        String nfdNormalizedString = Normalizer.normalize(str, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(nfdNormalizedString).replaceAll("");
     }
+
 }

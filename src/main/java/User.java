@@ -52,7 +52,7 @@ public class User extends Player {
         Scanner scan = new Scanner(System.in);
         String word = scan.nextLine();
         try {
-            String testedWord = potInstance.compareToDico(word);
+            String testedWord = potInstance.compareToDico(word, true);
             if(testedWord == ""){
                 System.out.println("Looseeeer, your french word doesn't exist :(\n");
             }else {
@@ -72,8 +72,9 @@ public class User extends Player {
         String words = " ";
         for (String item : this.words) {
             words += item;
+            words += " ";
         }
-        System.out.println("Which word you wanna us ? : "+words);
+        System.out.println("Which word you wanna use ? : "+words);
         String wordSelected = this.sc.next();
 
         if (!this.words.contains(wordSelected)) {
@@ -84,34 +85,67 @@ public class User extends Player {
         {
             System.out.println("Choose letter from Common Pot to finish your word :");
             String lettersSelected = sc.next();
-        }
-        //System.out.println("Ok try to build your word with : "+wordSelected);
-
-        //Tant que le bug audessus persiste la partie ci dessous commenté ne doit pas être décommenté
-        /*if(!potInstance.compareToCommonPot(lettersSelected)){
-            System.out.println("No ! This letters are not in the Common Pot ");
-            this.useMyWords();
-        }
-        String createdWord = wordSelected + lettersSelected;
-        System.out.println("You choose : "+createdWord);
-
-        try {
-            potInstance.dicoAccess(createdWord);
-            if(createdWord == ""){
-                System.out.println("Looseeeer, your french word doesn't exist :(\n");
-            }else {
-                //We add the word to player's collection
-                this.words.add(createdWord);
-                System.out.println("Word : '" + createdWord + "' is correct ! You can pull another letter :D\n");
-                this.wordSuccess(createdWord);
+            if (potInstance.compareToCommonPot(lettersSelected) == true){
+                System.out.println("Ok try to build your word with : "+wordSelected);
+                try {
+                    String createdWord = wordSelected + lettersSelected;
+                    System.out.println("You choosed the word : "+createdWord);
+                    String result = potInstance.compareToDico(createdWord, false);
+                    if(result == ""){
+                        System.out.println("Looseeeer, your french word doesn't exist :(\n");
+                    }else {
+                        //We add the word to player's collection
+                        this.words.add(result);
+                        System.out.println("Word : '" + result + "' is correct ! You can pull another letter :D\n");
+                        this.wordSuccess(result);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Please, use Common Pot letter(s)");
+                this.useMyWords();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
+        }
     }
 
     void useOpponentWords() {
-        System.out.println("Use one of your opponent's words and complete it with Common Pot");
+        System.out.println("Use one of your opponent's words and complete it with Common Pot letter(s)");
+        String words = " ";
+        for (String item : this.getOpponentList()) {
+            words += item;
+            words += " ";
+        }
+        System.out.println("Which word you wanna use ? : "+words);
+        String wordSelected = this.sc.next();
+
+        if (!this.getOpponentList().contains(wordSelected)) {
+            System.out.println("No ! It's not his word ");
+            this.useOpponentWords();
+        } else {
+            System.out.println("Choose letter from Common Pot to finish your word :");
+            String lettersSelected = sc.next();
+            if (potInstance.compareToCommonPot(lettersSelected) == true){
+                System.out.println("Ok try to build your word with : "+wordSelected);
+                try {
+                    String createdWord = wordSelected + lettersSelected;
+                    System.out.println("You choosed the word : "+createdWord);
+                    String result = potInstance.compareToDico(createdWord, false);
+                    if(result == ""){
+                        System.out.println("Looseeeer, your french word doesn't exist :(\n");
+                    }else {
+                        //We add the word to player's collection
+                        this.words.add(result);
+                        System.out.println("Word : '" + result + "' is correct ! You can pull another letter :D\n");
+                        this.wordSuccess(result);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Please, use Common Pot letter(s)");
+                this.useMyWords();
+            }
+        }
     }
 }

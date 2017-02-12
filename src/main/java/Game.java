@@ -20,9 +20,13 @@ public class Game {
         Player player = this.firstRound();
         int idPlayer = player.round();
         while(user.words.size()<10 || IA.words.size()<10) {
+            System.out.println("IA score : "+IA.words.size());
+            System.out.println("User score : "+user.words.size());
             if (idPlayer == 2){
+                user.setOpponentList(IA.words);
                 idPlayer = user.round();
             }else {
+                user.setOpponentList(user.words);
                 idPlayer = IA.round();
             }
         }

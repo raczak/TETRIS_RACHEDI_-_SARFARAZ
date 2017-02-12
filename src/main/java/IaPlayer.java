@@ -8,6 +8,10 @@ public class IaPlayer extends Player{
     public int id = 2;
     public IaPlayer() {
         this.words = new ArrayList<String>();
+        this.words.add("a");
+        this.words.add("aa");
+        this.words.add("loup");
+        this.words.add("loupe");
     }
 
     public int round() {
@@ -24,7 +28,9 @@ public class IaPlayer extends Player{
         System.out.println("IA is trying to build a word :o");
 
         try {
-            String testedWord = potInstance.compareToDico("chat");
+            System.out.println("Vérification du mot au commonpot\n");
+            String testedWord = potInstance.compareToDico("chat", true);
+            System.out.println("Résultat de la vérification '" + testedWord);
             if(testedWord == ""){
                 System.out.println("IA was unable to build a word :(\n");
             }else {

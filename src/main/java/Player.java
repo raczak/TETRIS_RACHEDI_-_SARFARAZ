@@ -9,6 +9,7 @@ public abstract class Player {
     protected ArrayList<String> words;
     protected CommonPot potInstance = CommonPot.getInstance();
     protected Scanner sc = new Scanner(System.in);
+    protected ArrayList<String> listOfOpponentWords;
 
     protected char pullLetterFromBag() {
         Random rand = new Random();
@@ -16,6 +17,14 @@ public abstract class Player {
         return randLetter;
     }
     abstract int round();
+
+    void setOpponentList(ArrayList<String> oppenentList){
+        this.listOfOpponentWords = oppenentList;
+    }
+
+    ArrayList<String> getOpponentList(){
+        return this.listOfOpponentWords;
+    }
 
     void wordSuccess(String testedWord) {
         ArrayList<Character> wordConvertedToChar = new ArrayList<Character>();
