@@ -74,18 +74,18 @@ public class User extends Player {
             words += item;
         }
         System.out.println("Which word you wanna us ? : "+words);
-        Scanner scan = new Scanner(System.in);
-        String wordSelected = scan.nextLine();
+        String wordSelected = this.sc.next();
 
         if (!this.words.contains(wordSelected)) {
             System.out.println("No ! It's not your word ");
             this.useMyWords();
         }
-
+        else
+        {
+            System.out.println("Choose letter from Common Pot to finish your word :");
+            String lettersSelected = sc.next();
+        }
         //System.out.println("Ok try to build your word with : "+wordSelected);
-        System.out.println("Choose letter from Common Pot to finish your word :");
-        Scanner scan2 = new Scanner(System.in);
-        String lettersSelected = scan2.nextLine();
 
         //Tant que le bug audessus persiste la partie ci dessous commenté ne doit pas être décommenté
         /*if(!potInstance.compareToCommonPot(lettersSelected)){
