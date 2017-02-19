@@ -41,6 +41,10 @@ public abstract class Player {
         }
         potInstance.addLetter(this.pullLetterFromBag());
         //Because he found a word, he can try again
-        this.round();
+        if(this.words.size() < 10){
+            this.round();
+        } else {
+            return;
+        }
     }
 }
