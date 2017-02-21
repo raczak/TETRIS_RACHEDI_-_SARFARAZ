@@ -39,4 +39,17 @@ public class Dictionary implements IDictionary {
         } while (br.ready());
         return "";
     }
+
+    public boolean containsWord(String word) throws IOException {
+        BufferedReader br = this.OpenFile();
+        String currentLine;
+        do {
+            currentLine = br.readLine();
+            if (currentLine.startsWith(word)) {
+                br.close();
+                return true;
+            }
+        } while (br.ready());
+        return false;
+    }
 }

@@ -44,41 +44,52 @@ public class IaPlayer extends Player{
 
     public String createWord() {
         String word = "";
+        ArrayList<Integer> checked_position = new ArrayList<Integer>();
+        int word_length = word.length();
+        System.out.println("taille du pot commun : "+this.potInstance.getLetterList().size());
         for(int i = 0; i < this.potInstance.getLetterList().size(); i++)
         {
             System.out.println("i : "+i);
-            word = word + this.potInstance.getLetterList().get(i).toString();
-            System.out.println("iWord = "+word);
+            System.out.println("Rajout de l'indice : "+i);
+            checked_position.add(i);
+            word = this.potInstance.getLetterList().get(i).toString();
+            //System.out.println("lettre de départ = "+word);
             for(int j = 0; j < this.potInstance.getLetterList().size(); j++)
             {
-                System.out.println("j : "+j);
-                if(i==j){
+                System.out.println("indice lettre complémentaire testée : "+j);
+                if(checked_position.contains(j)){
                     if(j+1 < this.potInstance.getLetterList().size()){
-                        System.out.println("j : "+j);
-                        System.out.println("size : "+this.potInstance.getLetterList().size());
+                        System.out.println("valeur j : "+j);
+                        //System.out.println("taille du pot commun : "+this.potInstance.getLetterList().size());
                         j++;
                         System.out.println("j+i : "+j);
                     }
+                    if(j+1 == this.potInstance.getLetterList().size()){
+                        System.out.println("j+1=longueur pot commun");
+                        break;
+                    }
                 }
                 String item = this.potInstance.getLetterList().get(j).toString();
-                String testedWord=word+item;
-                System.out.println("jWord = "+testedWord);
+                word=word+item;
+                System.out.println("Combinaisons testées = "+word);
                 try {
-                    if(this.potInstance.compareToDico(testedWord, false) == ""){
+                    if(this.potInstance.containsInDico(word) == false){ //si le mot n'est pas contenu dans dictionnaire
                         System.out.println("mot non trouvé, valeur de j : "+j);
+                        word=word.substring(0, word.length()-1);
                     } else {
-                        return testedWord;
+                        System.out.println("mot contenu");
+                        System.out.println("Rajout de l'indice : "+j);
+                        checked_position.add(j);
+                        j=0;
+                        if(this.potInstance.compareToDico(word, false) == word){ //si le mot == dictionnaire
+                            return word;
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(i+1==this.potInstance.getLetterList().size()){
-                i=word.length();
-                word = word + this.potInstance.getLetterList().get(i).toString();
-            } else {
-                word = "";
-            }
+            checked_position.remove(i);
         }
         return "";
     }

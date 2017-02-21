@@ -51,6 +51,11 @@ public class CommonPot {
         }
     }
 
+    public boolean containsInDico(String word) throws IOException {
+        String convertedWord = this.convertAccentLettersToEnglishLetters(word);
+        return dico.containsWord(word);
+    }
+
     public boolean compareToCommonPot(String word) {
         ArrayList<Character> wordConvertedToChar = new ArrayList<Character>();
         for (char c : word.toCharArray()) {
