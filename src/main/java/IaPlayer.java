@@ -43,6 +43,43 @@ public class IaPlayer extends Player{
     }
 
     public String createWord() {
+        String testedWord = "";
+        int prefix = 1;
+        ArrayList<Integer> used_words = new ArrayList<Integer>();
+        int initial_indice;
+
+        for(int i=0; i< this.potInstance.getLetterList().size(); i++){
+            used_words.add(i);
+            initial_indice = i;
+            testedWord = this.potInstance.getLetterList().get(i).toString();
+
+            for(int j=0; j<this.potInstance.getLetterList().size(); j++){
+                if(used_words.contains(j)){
+                    break;
+                } else {
+                    used_words.add(j);
+                    testedWord = testedWord + this.potInstance.getLetterList().get(j).toString();
+                    try {
+                        if(this.potInstance.containsInDico(testedWord) == false){
+                            used_words.remove(j);
+                            break;
+                        } else {
+                            if(this.potInstance.compareToDico(testedWord, false) == testedWord){
+                                return testedWord;
+                            } else {
+                                prefix = prefix + 1;
+                                j=-1;
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+
+
         String word = "";
         ArrayList<Integer> checked_position = new ArrayList<Integer>();
         int word_length = word.length();
