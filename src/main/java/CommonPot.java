@@ -51,6 +51,14 @@ public class CommonPot {
         }
     }
 
+    public void wordInCommonPot() {
+        String letters = " ";
+        for (char item : getLetterList()) {
+            letters += " " + new StringBuilder().append(item).toString();
+        }
+        System.out.println("Letters in COMMON POT : "+letters+"\n");
+    }
+
     public boolean containsInDico(String word) throws IOException {
         String convertedWord = this.convertAccentLettersToEnglishLetters(word);
         return dico.containsWord(word);
