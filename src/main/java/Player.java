@@ -27,6 +27,7 @@ public abstract class Player {
     }
 
     void wordSuccess(String testedWord) {
+        System.out.println("SUCCESS : '" + testedWord + "' is correct ! You can pull another letter :D");
         ArrayList<Character> wordConvertedToChar = new ArrayList<Character>();
         for (char c : testedWord.toCharArray()) {
             wordConvertedToChar.add(c);
@@ -36,9 +37,7 @@ public abstract class Player {
                 potInstance.getLetterList().remove(item);
             }
         }
-        for (Character value : potInstance.getLetterList()) {
-            System.out.println("Value = " + value);
-        }
+        potInstance.wordInCommonPot();
         potInstance.addLetter(this.pullLetterFromBag());
         //Because he found a word, he can try again
         if(this.words.size() < 10){
