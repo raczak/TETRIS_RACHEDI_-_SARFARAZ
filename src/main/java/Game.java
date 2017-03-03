@@ -30,11 +30,7 @@ public class Game {
                 idPlayer = IA.round();
             }
         }
-        String letters = " ";
-        for (String item : user.words) {
-            letters += " " + item;
-        }
-        System.out.println(letters+"\n");
+        System.out.println("/////// **** END OF THE GAME ****///////\n");
     }
 
     public Player firstRound() {
