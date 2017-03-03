@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ed7a057-074b-4ff1-a334-4e9b5b42edcd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/CommonPot.class" afterPath="$PROJECT_DIR$/build/classes/main/CommonPot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/IaPlayer.class" afterPath="$PROJECT_DIR$/build/classes/main/IaPlayer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/CommonPot.java" afterPath="$PROJECT_DIR$/src/main/java/CommonPot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/IaPlayer.java" afterPath="$PROJECT_DIR$/src/main/java/IaPlayer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -1003,7 +998,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488404325602</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add IA algo and correction of few ugly bugs">
+      <created>1488574792607</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1488574792607</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1123,7 +1125,8 @@
     <MESSAGE value="Changes :&#10;Word recognition loop changements" />
     <MESSAGE value="Test integration" />
     <MESSAGE value="Tests integration : CommonPot" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tests integration : CommonPot" />
+    <MESSAGE value="Add IA algo and correction of few ugly bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add IA algo and correction of few ugly bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
