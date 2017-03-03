@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Created by zrachedi on 09/02/2017.
- * I deceided to use a singleton in order to keep
+ * I decided to use a singleton in order to keep
  * a single instance of the common pot for everyone
  */
 public class CommonPot {
