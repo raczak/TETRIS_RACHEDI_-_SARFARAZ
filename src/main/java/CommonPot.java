@@ -41,7 +41,6 @@ public class CommonPot {
         if (verification == true) {
             boolean flag = compareToCommonPot(convertedWord);
             if (flag) {
-                System.out.println("dico.isWord... : "+convertedWord);
                 return dico.isWord(convertedWord);
             } else {
                 return "";
@@ -61,7 +60,7 @@ public class CommonPot {
 
     public boolean containsInDico(String word) throws IOException {
         String convertedWord = this.convertAccentLettersToEnglishLetters(word);
-        return dico.containsWord(word);
+        return dico.containsWord(convertedWord);
     }
 
     public boolean compareToCommonPot(String word) {
@@ -71,7 +70,6 @@ public class CommonPot {
         }
         boolean flag = false;
         for (Character item : wordConvertedToChar) {
-            System.out.println(this.getLetterList().contains(item));
             if (this.getLetterList().contains(item)) {
                 flag = true;
             }else {

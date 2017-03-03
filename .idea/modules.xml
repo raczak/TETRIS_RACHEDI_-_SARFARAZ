@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\Momin\IdeaProjects\lettergame_rachedi_sarfaraz\src\main\Tests.iml" filepath="C:\Users\Momin\IdeaProjects\lettergame_rachedi_sarfaraz\src\main\Tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../Momin/IdeaProjects/lettergame_rachedi_sarfaraz/src/main/Tests.iml" filepath="$PROJECT_DIR$/../../../Momin/IdeaProjects/lettergame_rachedi_sarfaraz/src/main/Tests.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lettersgame.iml" filepath="$PROJECT_DIR$/.idea/modules/lettersgame.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lettersgame_main.iml" filepath="$PROJECT_DIR$/.idea/modules/lettersgame_main.iml" group="lettersgame" />
     </modules>
